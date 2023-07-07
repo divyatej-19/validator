@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+     </head>
+     <body style="background-color: skyblue;">
+        <table id="body" onmouseover="color()">
+            <tr>
+        <td>
+            <div>
+            <form lang="en" method="post" enctype="text/plain" name="form" id="reg_form" onsubmit="sendemail()">
+            <h3>Form</h3>
+            <table>
+    <tr>
+        <td><label>First Name</label></td>
+        <td><input type="text" id="fname" name="First_Name" onfocusout="validfirstname()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+        <td><label>Surname</label></td>
+        <td><input type="text" id="in-se" name="surname" onfocusout="validSurname()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+        <td><label>Gender</label></td>
+        <td>
+            <input type="radio" name="Gender" value="Male" id="in-ram" onclick="validgender(this.value)" required>
+            male
+           <input type="radio" name="Gender" value="Female" id="in-raf" onclick="validgender(this.value)">
+            female
+            <input type="radio" name="Gender" value="other" id="in-rao" onclick="validgender(this.value)">
+        other
+        </td>
+    </tr>
+    <tr>
+        <td><label>Date of birth</label></td>
+        <td><input type="date" id="in-db"  name="date of birth" onfocusout="validdateofbirth()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+        <td><label>Telephone</label></td>
+        <td><input type="tel" id="in-tlpn" name="mobile" onfocusout="validtelephone()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+        <td><label>address</label></td>
+        <td><input type="text" size=10 id="in-ads" name="address" onfocusout="validaddress()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+         <td><label>Postcode</label></td>
+         <td><input type="text" name="postcode" id="in-po" maxlength="4" onfocusout="validpostcode()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+        <td><label>state</label></td>
+        <td><select name="state" id="in-sta" onfocusout="validstate()" onfocusin="txt_onfocusin(this)" required>
+            <option value="">--select state--</option>
+            <option value="victoria" id="VIC">VIC</option>
+            <option value="Tasmania" id="TAS">TAS</option>
+        </select>
+        <input type="text" id="addstate" onfocusout="addsta()" onfocusin="txt_onfocusin(this)">
+    </td>
+    </tr>
+    <tr>
+        <td><label>Email-ID</label></td>
+        <td><input type="email" id="in-EM" onfocusout="validemail()" onfocusin="txt_onfocusin(this)" required></td>
+    </tr>
+    <tr>
+        <td><label>FEEDBACK</label></td>
+        <td><textarea name="Feedback" id="in-FK"  onfocusout="validfeedback()" onfocusin="txt_onfocusin(this)" required></textarea></td>
+    </tr>
+    <tr>
+        <td><input type="reset"></td>
+        <td><input type="submit" onclick="return checkform()"></td>
+    </tr>
+    </table>
+</form>
+</div>
+</td>
+<td>
+    <div>
+        <table>
+            <tr>
+                <td colspan="2">
+    <h3>Result from the form</h3>
+</td>    
+</tr>
+    <tr>
+        <td><label>Name</label></td>
+        <td><label id="ot-fe" onmouseover="increasefe()" onmouseout="decreasefe()"></label></td>
+    </tr>
+    <tr>
+        <td><label>Surname</label></td>
+        <td><label id="ot-se" onmouseover="increasese()" onmouseout="decreasese()"></label></td>
+    </tr>
+    <tr>
+        <td> <label>Gender</label></td>
+        <td> <label id="ot-gd" onmouseover="increasegen()" onmouseout="decreasegen()"></label></td>
+    </tr>
+    <tr>
+        <td><label>Date of birth/Age</label></td>
+        <td> <label id="ot-db" onmouseover="increasedb()" onmouseout="decreasedb()"></label></td>   
+     </tr>
+    <tr>
+        <td><label>Address</label></td>
+        <td><label id="ot-ads" onmouseover="increaseads()" onmouseout="decreaseads()"></label></td>
+    </tr>
+    <tr>
+        <td><label>Postcode</label></td>
+        <td><label id="ot-po" onmouseover="increasepo()" onmouseout="decreasepo()"></label></td>
+    </tr>
+    <tr>
+        <td><label>State</label></td>
+        <td><label id="ot-sta" onmouseover="increasesta()" onmouseout="decreasesta()"></label></td>
+    </tr>
+    <tr>
+        <td><label>Email-ID</label></td>
+        <td><label id="ot-EM" onmouseover="increaseEM()" onmouseout="decreaseEM()"></label></td>
+    </tr>
+    <tr>
+        <td><label>Feedback</label></td>
+        <td><label id="ot-FK" onmouseover="increaseFK()" onmouseout="decreaseFK()"></label></td>
+    </tr>
+    <tr>
+        <td><label>Telephone</label></td>
+        <td><label id="ot-tlpn" onmouseover="increasetlpn()" onmouseout="decreasetlpn()"></label></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+<h3>Final Status:</h3><p id="fnstatus"></p>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+<script>
+function color(){
+    document.getElementById('body').style.backgroundColor="powderblue";
+}
+    function txt_onfocusin(obj){ 
+ obj.style.backgroundColor = "lightgreen"; 
+ obj.style.color="red";
+ }
+
+ /*Firstname validation for only characters can allow*/
+ function validfirstname()
+{   document.getElementById('fname').style.backgroundColor="#00ffff"
+ var firstname=document.getElementById('fname').value;
+ var letters=/^[A-Za-z]+$/;
+ if (firstname==null || firstname=='')
+ {
+     document.getElementById('ot-fe').innerHTML="firstname must not be empty";
+     document.getElementById('fname').focus();
+     document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+     return false;
+ }
+ else{
+ if(firstname.match(letters))
+ {
+ document.getElementById('ot-fe').innerHTML=firstname;
+ return true;
+ }
+ else
+ {
+     document.getElementById('ot-fe').innerHTML="firstname must have alphabet characters only";
+     document.getElementById('fname').focus();
+     return false;
+ }
+}
+}
+/*Surname validation for only characters can allow*/
+function validSurname()
+{   document.getElementById('in-se').style.backgroundColor="#00ffff"
+ var Surname=document.getElementById('in-se').value;
+ var letters=/^[A-Za-z]+$/;
+ if (Surname==null || Surname=='')
+ {
+     document.getElementById('ot-se').innerHTML="surname must not be empty";
+     document.getElementById('in-se').focus();
+     document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+     return false;
+ }
+ else{
+ if(Surname.match(letters))
+ {
+ document.getElementById('ot-se').innerHTML=Surname;
+ return true;
+ }
+ else
+ {
+     document.getElementById('ot-se').innerHTML="surname must have alphabet characters only";
+     document.getElementById('in-se').focus();
+     return false;
+ }
+}
+}        
+/*Country validation shoule be selected */
+ function validstate()
+ {   document.getElementById('in-sta').style.backgroundColor="#00ffff";
+     var state=document.getElementById('in-sta');
+     if(state.value=="Default")
+     {
+         document.getElementById('ot-sta').innerHTML="Select your state from the list";
+         document.getElementById('in-sta').focus();
+         document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+         return false;
+     }
+     else
+     {
+         document.getElementById('ot-sta').innerHTML=state.value;
+         return true;
+     }
+ }  
+/*   function addshow()
+{
+document.getElementById('addelement').style.visibility="visible";
+document.getElementById('showadd').style.visibility="hidden";
+document.getElementById('eadd').style.visibility="visible";
+}*/
+
+ function addsta()
+ {   document.getElementById('addstate').style.backgroundColor="#00ffff";
+     var eadd = document.getElementById("in-sta");
+     var option = document.createElement("option");
+     var element=document.getElementById('addstate');
+     option.value=element.value;
+     option.text =((element.value).substring(0,3)).toUpperCase();    
+     eadd.add(option, element[0]);
+ } 
+/* Validation Post Code must have numeric characters only*/
+function validpostcode()
+{ document.getElementById('in-po').style.backgroundColor="#00ffff";
+var postcode=document.getElementById('in-po').value;
+var numbers=/^[0-9]+$/;
+if  (postcode==null || postcode=='')
+{
+ document.getElementById('ot-po').innerHTML="Post Code must and should fill";
+   document.getElementById('in-po').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false;
+}
+else{
+if((postcode.match(numbers)) && postcode.length==4)
+{
+ document.getElementById('ot-po').innerHTML=postcode;
+   return true;
+}
+else
+{
+ document.getElementById('ot-po').innerHTML="Post Code must have numeric characters only";
+   document.getElementById('in-po').focus();
+   return false;          
+}
+}
+}
+
+/* Validation telephone must have numeric characters only*/
+function validtelephone()
+{ document.getElementById('in-tlpn').style.backgroundColor="#00ffff";
+var telephone=document.getElementById('in-tlpn').value;
+var numbers=/^[0-9]+$/;
+if  (telephone==null || telephone=='')
+{
+ document.getElementById('ot-tlpn').innerHTML="Telephone ought to be fill";
+   document.getElementById('in-tlpn').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false;
+}
+else{
+if((telephone.match(numbers)) && telephone.length==10)
+{
+ document.getElementById('ot-tlpn').innerHTML=telephone;
+   return true;
+}
+else
+{
+ document.getElementById('ot-tlpn').innerHTML="Telephone must have numeric characters only";
+   document.getElementById('in-tlpn').focus();
+   return false;          
+}
+}
+}
+/* Validation address must have numeric characters only*/
+function validaddress()
+{     document.getElementById('in-ads').style.backgroundColor="#00ffff";
+var address=document.getElementById('in-ads').value;
+if(address==null || address=="")
+{
+ document.getElementById('ot-ads').innerHTML="Address must and ought to be filled";
+   document.getElementById('in-ads').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false;   
+}
+else
+{
+ document.getElementById('ot-ads').innerHTML=address;
+ document.getElementById('in-sta').focus();
+   return true;
+}
+}
+/* Validation feedback must have numeric characters only*/
+function validfeedback()
+{     document.getElementById('in-FK').style.backgroundColor="#00ffff";
+var fback=document.getElementById('in-FK').value;
+if(fback==null ||  fback=="")
+{
+ document.getElementById('ot-FK').innerHTML="Feedback ought to be fill";
+   document.getElementById('in-FK').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false;   
+}
+else
+{
+ document.getElementById('ot-FK').innerHTML=fback;
+   return true;
+}
+}
+ /*Validation ddate of birth and displaying age*/
+ function validdateofbirth()
+{     document.getElementById('in-db').style.backgroundColor="#00ffff";
+var db=document.getElementById('in-db').value;
+var db1=new Date(db);
+var selectedyear=db1.getFullYear();
+var currentdate=new Date();
+var currentyear=currentdate.getFullYear();
+var age=currentyear-selectedyear;
+if(db==null || db=='')
+{
+ document.getElementById('ot-db').innerHTML="DOB field must be filled";
+   document.getElementById('in-db').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false;  
+}
+else{
+if(age>18)
+{
+   document.getElementById('ot-db').innerHTML=db+" : "+age+" Years";
+   return true;
+}
+else
+{
+   document.getElementById('ot-db').innerHTML="Age must be more than 18 years";
+   document.getElementById('in-db').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false;
+}
+}
+}
+   /* Gender validation for select the value */
+   function validgender(gender)
+ {
+     document.getElementById('ot-gd').innerHTML=gender;
+ }
+ function validdob()
+ {
+     var gender=document.getElementById('in-db').value;
+     document.getElementById('ot-db').innerHTML=dob;
+ }
+ /* Validation for Email id */
+function validemail()
+{ document.getElementById('in-EM').style.backgroundColor="#00ffff";
+var email=document.getElementById('in-EM').value;
+var emailformate=/^\w+([\.-]?\w+)*@\w+([\.]?\w+)*(\.\w{2,3})+$/;
+if (email==null || email=='')
+{
+ document.getElementById('ot-EM').innerHTML="this field is must to filled";
+   document.getElementById('in-EM').focus();
+   document.getElementById('fnstatus').innerHTML="all fields ought to be filled"
+   return false; 
+}
+else{
+if(email.match(emailformate))
+{
+   document.getElementById('ot-EM').innerHTML=email;
+   return true;
+}
+else
+{
+   document.getElementById('ot-EM').innerHTML="You have entered an invalid email address!";
+   document.getElementById('in-EM').focus();
+   return false;
+}
+}
+}
+ /* Validation submit sent to email which entered in table*/
+ function sendemail(){
+var email=document.getElementById('in-EM').value;
+var add=document.getElementById('in-ads').value;
+document.getElementById('reg_form').action="mailto:"+email+"?subject="+add;
+document.getElementById('fnstatus').innerHTML='All Feilds are validated and Form submited';
+}
+/*Increase firstname on mouse over and color change*/
+function increasefe()
+{
+document.getElementById('ot-fe').style.fontSize='20px';
+document.getElementById('ot-fe').style.backgroundColor='Red';
+document.getElementById('ot-fe').style.color='white';
+}
+/*Increase firstname on mouse over and color change*/
+function decreasefe()
+{
+document.getElementById('ot-fe').style.fontSize='17px';
+document.getElementById('ot-fe').style.backgroundColor='powderblue';
+document.getElementById('ot-fe').style.color='black';
+}
+/*Increase surname on mouse over and color change*/
+function increasese()
+{
+document.getElementById('ot-se').style.fontSize='20px';
+document.getElementById('ot-se').style.backgroundColor='Red';
+document.getElementById('ot-se').style.color='white';
+}
+/*Increase surname on mouse over and color change*/
+function decreasese()
+{
+document.getElementById('ot-se').style.fontSize='17px';
+document.getElementById('ot-se').style.backgroundColor='powderblue';
+document.getElementById('ot-se').style.color='black';
+}
+/*Increase gender on mouse over and color change*/
+function increasegen()
+{
+document.getElementById('ot-gd').style.fontSize='25px';
+document.getElementById('ot-gd').style.backgroundColor='Red';
+document.getElementById('ot-gd').style.color='white';
+}
+/*Increase gender on mouse over and color change*/
+function decreasegen()
+{
+document.getElementById('ot-gd').style.fontSize='17px';
+document.getElementById('ot-gd').style.backgroundColor='powderblue';
+document.getElementById('ot-gd').style.color='black';
+}
+/*Increase dob on mouse over and color change*/
+function increasedb()
+{
+document.getElementById('ot-db').style.fontSize='25px';
+document.getElementById('ot-db').style.backgroundColor='Red';
+document.getElementById('ot-db').style.color='white';
+}
+/*Increase dob on mouse over and color change*/
+function decreasedb()
+{
+document.getElementById('ot-db').style.fontSize='17px';
+document.getElementById('ot-db').style.backgroundColor='powderblue';
+document.getElementById('ot-db').style.color='black';
+}
+/*Increase telephone on mouse over and color change*/
+function increasetlpn()
+{
+document.getElementById('ot-tlpn').style.fontSize='25px';
+document.getElementById('ot-tlpn').style.backgroundColor='Red';
+document.getElementById('ot-tlpn').style.color='white';
+}
+/*Increase telephone on mouse over and color change*/
+function decreasetlpn()
+{
+document.getElementById('ot-tlpn').style.fontSize='17px';
+document.getElementById('ot-tlpn').style.backgroundColor='powderblue';
+document.getElementById('ot-tlpn').style.color='black';
+}
+/*Increase email on mouse over and color change*/
+function increaseEM()
+{
+document.getElementById('ot-EM').style.fontSize='25px';
+document.getElementById('ot-EM').style.backgroundColor='Red';
+document.getElementById('ot-EM').style.color='white';
+}
+/*Increase email on mouse over and color change*/
+function decreaseEM()
+{
+document.getElementById('ot-EM').style.fontSize='17px';
+document.getElementById('ot-EM').style.backgroundColor='powderblue';
+document.getElementById('ot-EM').style.color='black';
+}
+/*Increase postcode on mouse over and color change*/
+function increasepo()
+{
+document.getElementById('ot-po').style.fontSize='25px';
+document.getElementById('ot-po').style.backgroundColor='Red';
+document.getElementById('ot-po').style.color='white';
+}
+/*Increase postcode on mouse over and color change*/
+function decreasepo()
+{
+document.getElementById('ot-po').style.fontSize='17px';
+document.getElementById('ot-po').style.backgroundColor='powderblue';
+document.getElementById('ot-po').style.color='black';
+}
+/*Increase address on mouse over and color change*/
+function increaseads()
+{
+document.getElementById('ot-ads').style.fontSize='25px';
+document.getElementById('ot-ads').style.backgroundColor='Red';
+document.getElementById('ot-ads').style.color='white';
+}
+/*Increase address on mouse over and color change*/
+function decreaseads()
+{
+document.getElementById('ot-ads').style.fontSize='17px';
+document.getElementById('ot-ads').style.backgroundColor='powderblue';
+document.getElementById('ot-ads').style.color='black';
+}
+/*Increase state on mouse over and color change*/
+function increasesta()
+{
+document.getElementById('ot-sta').style.fontSize='25px';
+document.getElementById('ot-sta').style.backgroundColor='Red';
+document.getElementById('ot-sta').style.color='white';
+}
+/*Increase state on mouse over and color change*/
+function decreasesta()
+{
+document.getElementById('ot-sta').style.fontSize='17px';
+document.getElementById('ot-sta').style.backgroundColor='powderblue';
+document.getElementById('ot-sta').style.color='black';
+}
+/*Increase feedback on mouse over and color change*/
+function increaseFK()
+{
+document.getElementById('ot-FK').style.fontSize='25px';
+document.getElementById('ot-FK').style.backgroundColor='Red';
+document.getElementById('ot-FK').style.color='white';
+}
+/*Increase feedback on mouse over and color change*/
+function decreaseFK()
+{
+document.getElementById('ot-FK').style.fontSize='17px';
+document.getElementById('ot-FK').style.backgroundColor='powderblue';
+document.getElementById('ot-FK').style.color='black';
+}
+</script>
+</body>
+</html>
